@@ -17,7 +17,6 @@ class NextDocument extends Document {
     return (
       <Html lang="pt-br">
         <Head>
-          <title>Rick and Morty - App</title>
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link
