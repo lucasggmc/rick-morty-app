@@ -1,6 +1,10 @@
+import { useEffect, useState } from "react";
+import { EpisodeCard } from "../../components/EpisodeCard";
 import * as S from "./styles";
 
 const HomeTemplate = () => {
+  const [characters, setCharacters] = useState<[]>();
+  console.log("cc", characters);
   const query = `{
     characters {
         results {
@@ -18,8 +22,9 @@ const HomeTemplate = () => {
     }
     `;
 
-  const getEpisodes = async () => {
-    const result = await fetch("https://rickandmortyapi.com/graphql", {
+  useEffect(() => {
+    //const getEpisodes = async () => {
+    fetch("https://rickandmortyapi.com/graphql", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -28,19 +33,30 @@ const HomeTemplate = () => {
       body: JSON.stringify({ query: query }),
     })
       .then((r) => r.json())
-      .then((data) => console.log("data returned:", data));
-  };
-  getEpisodes();
+      .then((result) => {
+        console.log("data returned:", result);
+        console.log("test", result?.data.characters);
+        if (result?.data?.characters)
+          setCharacters(result?.data?.characters?.results);
+      });
+    //console.log("r", result);
+    //};
+    //getEpisodes();
+  }, []);
 
   return (
-    <>
+    <S.Wrapper>
       <S.Header>
         <h1>Rick and Morty</h1>
       </S.Header>
       <S.Main>
-        <p>teste 2</p>
+        <S.EpisodesList>
+          {characters?.map((item) => (
+            <EpisodeCard character={item} />
+          ))}
+        </S.EpisodesList>
       </S.Main>
-    </>
+    </S.Wrapper>
   );
 };
 
