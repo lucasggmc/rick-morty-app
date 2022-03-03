@@ -1,48 +1,11 @@
-import { useEffect, useState } from "react";
+import { useQuery } from "@apollo/client";
 import { EpisodeCard } from "../../components/EpisodeCard";
+import { GET_EPISODES } from "../../graphql/queries/main";
 import * as S from "./styles";
 
 const HomeTemplate = () => {
-  const [characters, setCharacters] = useState<[]>();
-  console.log("cc", characters);
-  const query = `{
-    characters {
-        results {
-          id
-          image
-          status
-          episode {
-            name
-            episode
-            air_date
-            created
-          }
-        } 
-      }
-    }
-    `;
-
-  useEffect(() => {
-    //const getEpisodes = async () => {
-    fetch("https://rickandmortyapi.com/graphql", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify({ query: query }),
-    })
-      .then((r) => r.json())
-      .then((result) => {
-        console.log("data returned:", result);
-        console.log("test", result?.data.characters);
-        if (result?.data?.characters)
-          setCharacters(result?.data?.characters?.results);
-      });
-    //console.log("r", result);
-    //};
-    //getEpisodes();
-  }, []);
+  const { data } = useQuery(GET_EPISODES);
+  //console.log("data", data);
 
   return (
     <S.Wrapper>
@@ -51,7 +14,7 @@ const HomeTemplate = () => {
       </S.Header>
       <S.Main>
         <S.EpisodesList>
-          {characters?.map((item) => (
+          {data?.characters?.results.map((item: any) => (
             <EpisodeCard character={item} />
           ))}
         </S.EpisodesList>
