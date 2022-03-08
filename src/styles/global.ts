@@ -11,6 +11,8 @@ const GlobalStyles = createGlobalStyle`
   --small: 1.5rem;
   --medium: 3rem;
   --large: 5rem;
+
+  --radius: 4.5px;
 }
 
 * {
@@ -29,7 +31,7 @@ html, body, #__next {
   color: var(--white);
 }
 
-body {
+body, input, textarea, button {
   font-family: 'Roboto', sans-serif;
 }
 

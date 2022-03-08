@@ -5,6 +5,7 @@ export const GET_EPISODES = gql`
     characters {
       results {
         id
+        name
         image
         status
         episode {
