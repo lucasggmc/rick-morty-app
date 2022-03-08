@@ -1,16 +1,11 @@
-import {
-  GiDeadHead,
-  GiChewedSkull,
-  GiCentaurHeart,
-  GiRocket,
-} from "react-icons/gi";
+import { GiChewedSkull, GiCentaurHeart, GiRocket } from "react-icons/gi";
 import * as S from "./styles";
 
-interface EpisodeProps {
+interface CharacterProps {
   character: any;
 }
 
-const EpisodeCard = ({ character }: EpisodeProps) => {
+const CharacterCard = ({ character }: CharacterProps) => {
   return (
     <S.Container image={character.image}>
       <S.Title>{character.name}</S.Title>
@@ -24,4 +19,4 @@ const EpisodeCard = ({ character }: EpisodeProps) => {
   );
 };
 
-export { EpisodeCard };
+export { CharacterCard };

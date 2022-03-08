@@ -19,7 +19,7 @@ export const Main = styled.main`
   align-items: center;
 `;
 
-export const EpisodesList = styled.div`
+export const CharactersList = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
