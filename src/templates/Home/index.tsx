@@ -1,8 +1,7 @@
-import { useQuery } from "@apollo/client";
 import { useEffect, useState } from "react";
 import { CharacterCard } from "../../components/CharacterCard";
 import { Loader } from "../../components/Loader";
-import { GET_EPISODES } from "../../graphql/queries/main";
+import { useCharacters } from "../../utils/contexts/CharactersContext";
 import * as S from "./styles";
 
 type Character = {
@@ -13,23 +12,22 @@ type Character = {
 };
 
 const HomeTemplate = () => {
-  const { data, loading } = useQuery(GET_EPISODES);
-  const [characters, setCharacters] = useState<Character[]>();
-  console.log("data", data);
+  const { characters, isLoading } = useCharacters();
+  const [filteredCharacters, setFilteredCharacters] = useState<Character[]>();
 
   const handleSearch = (event: any) => {
     const searchedValue = String(event.target.value).toLowerCase();
-    const filteredCharacters = data?.characters?.results?.filter(
+    const filteredCharacters = characters?.results?.filter(
       (item: Character) =>
         item.name.toLowerCase().indexOf(searchedValue) > -1 ||
         item.status.toLowerCase().indexOf(searchedValue) > -1
     );
-    setCharacters(filteredCharacters);
+    setFilteredCharacters(filteredCharacters);
   };
 
   useEffect(() => {
-    setCharacters(data?.characters?.results);
-  }, [data]);
+    setFilteredCharacters(characters?.results);
+  }, [characters]);
 
   return (
     <S.Wrapper>
@@ -39,13 +37,13 @@ const HomeTemplate = () => {
       <S.Main>
         <S.Input
           type="text"
-          placeholder="Search a character or a life status"
+          placeholder="Search a character name or a life status"
           onChange={handleSearch}
         ></S.Input>
-        {loading && <Loader />}
-        {!loading && (
+        {isLoading && <Loader />}
+        {!isLoading && (
           <S.CharactersList>
-            {characters?.map((item: Character) => (
+            {filteredCharacters?.map((item: Character) => (
               <CharacterCard character={item} key={item.id} />
             ))}
           </S.CharactersList>
