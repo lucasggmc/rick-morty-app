@@ -3,7 +3,7 @@ import * as S from "./styles";
 
 const Loader = () => {
   return (
-    <S.Wrapper>
+    <S.Wrapper data-testid="loader">
       <Oval
         ariaLabel="loading-indicator"
         height={100}
