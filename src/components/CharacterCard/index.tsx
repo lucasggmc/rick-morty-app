@@ -1,9 +1,10 @@
 import Link from "next/link";
 import { GiChewedSkull, GiCentaurHeart, GiRocket } from "react-icons/gi";
+import { Character } from "../../templates/Home";
 import * as S from "./styles";
 
 interface CharacterProps {
-  character: any;
+  character: Character;
 }
 
 const CharacterCard = ({ character }: CharacterProps) => {

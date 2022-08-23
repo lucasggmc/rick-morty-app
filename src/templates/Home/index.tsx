@@ -4,7 +4,7 @@ import { Loader } from "../../components/Loader";
 import { useCharacters } from "../../utils/contexts/CharactersContext";
 import * as S from "./styles";
 
-type Character = {
+export type Character = {
   id: string;
   image: string;
   name: string;
