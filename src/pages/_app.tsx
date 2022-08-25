@@ -5,12 +5,6 @@ import { ApolloProvider } from "@apollo/client";
 import client from "../graphql/client";
 import GlobalStyles from "../styles/global";
 import { CharactersProvider } from "../utils/contexts/CharactersContext";
-import { makeServer } from "../miragejs/server";
-
-if (process.env.NODE_ENV === "development") {
-  console.log("ATTENTION - Using mirage server");
-  makeServer();
-}
 
 function RickMortyApp({ Component, pageProps }: AppProps) {
   return (

@@ -34,7 +34,6 @@
     "jest": "^27.4.7",
     "jest-dom": "^4.0.0",
     "jest-styled-components": "^7.0.8",
-    "miragejs": "^0.1.45",
     "sass": "^1.49.7",
     "typescript": "4.5.5"
   }
