@@ -1,6 +1,6 @@
 import { Character } from "../templates/Home";
 
-export const characters: Character[] = [
+export const mockedCharacters: Character[] = [
   {
     id: "1",
     image: "https://rickandmortyapi.com/api/character/avatar/2.jpeg",

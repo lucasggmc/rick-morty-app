@@ -1,5 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import HomeTemplate from ".";
+import { CharacterCard } from "../../components/CharacterCard";
+import { mockedCharacters } from "../../fixtures/mockedCharacters";
 
 describe("HomePage template", () => {
   it("should renders correctly", () => {
@@ -8,7 +10,13 @@ describe("HomePage template", () => {
     expect(screen.getByText("Rick and Morty"));
   });
 
-  it.todo("should render the Loading component if isLoading is true", () => {});
-  it.todo("should filter the characters if the search input change", () => {});
-  it.todo("should render the CharacterCard component 10 times", () => {}); // I think is better add this test as an integration test
+  it.todo("should render the Loading component if isLoading is true");
+
+  it("should render the CharacterCard component 2 times", () => {
+    mockedCharacters.forEach((character) => {
+      render(<CharacterCard character={character} />);
+    });
+
+    expect(screen.getAllByTestId("character-card")).toHaveLength(2);
+  }); // I think is better add this test as an integration test
 });

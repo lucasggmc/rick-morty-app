@@ -10,7 +10,10 @@ interface CharacterProps {
 const CharacterCard = ({ character }: CharacterProps) => {
   return (
     <Link href="/episodes-by-characters/1">
-      <a style={{ textDecoration: "none", fontSize: "1rem" }}>
+      <a
+        style={{ textDecoration: "none", fontSize: "1rem" }}
+        data-testid="character-card"
+      >
         <S.Container image={character.image}>
           <S.Title>{character.name}</S.Title>
           <S.Footer>

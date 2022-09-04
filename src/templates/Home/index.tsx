@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { CharacterCard } from "../../components/CharacterCard";
 import { Loader } from "../../components/Loader";
+import { Search } from "../../components/Search";
 import { useCharacters } from "../../utils/contexts/CharactersContext";
 import * as S from "./styles";
 
@@ -35,11 +36,7 @@ const HomeTemplate = () => {
         <h1>Rick and Morty</h1>
       </S.Header>
       <S.Main>
-        <S.Input
-          type="text"
-          placeholder="Search a character name or a life status"
-          onChange={handleSearch}
-        ></S.Input>
+        <Search handleSearch={handleSearch} />
         {isLoading && <Loader />}
         {!isLoading && (
           <S.CharactersList>
