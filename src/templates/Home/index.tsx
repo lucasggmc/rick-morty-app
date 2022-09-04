@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
-import { CharacterCard } from "../../components/CharacterCard";
-import { Loader } from "../../components/Loader";
-import { Search } from "../../components/Search";
-import { useCharacters } from "../../utils/contexts/CharactersContext";
-import * as S from "./styles";
+import { useEffect, useState } from 'react';
+import { CharacterCard } from '../../components/CharacterCard';
+import { Loader } from '../../components/Loader';
+import { Search } from '../../components/Search';
+import { useCharacters } from '../../utils/contexts/CharactersContext';
+import * as S from './styles';
 
 export type Character = {
   id: string;
@@ -21,7 +21,7 @@ const HomeTemplate = () => {
     const filteredCharacters = characters?.results?.filter(
       (item: Character) =>
         item.name.toLowerCase().indexOf(searchedValue) > -1 ||
-        item.status.toLowerCase().indexOf(searchedValue) > -1
+        item.status.toLowerCase().indexOf(searchedValue) > -1,
     );
     setFilteredCharacters(filteredCharacters);
   };
