@@ -5,6 +5,12 @@ import { Search } from ".";
 const handleSearch = jest.fn();
 
 describe("Search component", () => {
+  it("should renders correctly", () => {
+    render(<Search handleSearch={handleSearch} />);
+
+    expect(screen.getByTestId("input-search"));
+  });
+
   it("should call handleSearch if input change", async () => {
     render(<Search handleSearch={handleSearch} />);
 

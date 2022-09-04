@@ -10,8 +10,6 @@ describe("HomePage template", () => {
     expect(screen.getByText("Rick and Morty"));
   });
 
-  it.todo("should render the Loading component if isLoading is true");
-
   it("should render the CharacterCard component 2 times", () => {
     mockedCharacters.forEach((character) => {
       render(<CharacterCard character={character} />);
