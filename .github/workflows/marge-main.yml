@@ -28,12 +28,13 @@ jobs:
 
       - name: Run Jest tests
         run: yarn test
-        
-      - name: Deploy to netlify
-        uses: netlify/actions/cli@master
+
+      - name: Deploy to Netlify
+        uses: nwtgck/actions-netlify@v1.2
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
         with:
-          args: deploy --dir=dist --prod
-          secrets: '["NETLIFY_AUTH_TOKEN", "NETLIFY_SITE_ID"]'
+          publish-dir: './dist'
+          production-branch: main
+        timeout-minutes: 2
