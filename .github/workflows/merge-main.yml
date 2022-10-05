@@ -35,6 +35,7 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
         with:
-          publish-dir: '.next'
+          publish-dir: './public'
           production-branch: main
+          production-deploy: true
         timeout-minutes: 2
