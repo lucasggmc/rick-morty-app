@@ -28,7 +28,7 @@ jobs:
 
       - name: Run Jest tests
         run: yarn test
-        
+
       - name: Deploy to netlify
         uses: netlify/actions/cli@master
         env:
