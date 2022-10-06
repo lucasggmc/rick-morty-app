@@ -40,6 +40,7 @@ jobs:
           production-deploy: true
         timeout-minutes: 2
 
+        #Telegram deploy succes message
       - name: send telegram message on push
         uses: appleboy/telegram-action@master
         with:
