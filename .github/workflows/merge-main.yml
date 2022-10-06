@@ -39,3 +39,13 @@ jobs:
           production-branch: main
           production-deploy: true
         timeout-minutes: 2
+
+      - name: send telegram message on push
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: |
+            Deploy finished.
+
+            Repository: ${{ github.repository }}
