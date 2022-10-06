@@ -29,9 +29,6 @@ jobs:
       - name: Run Jest tests
         run: yarn test
 
-      - name: Force failure
-        run: exit 1
-
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v1.2
         env:
