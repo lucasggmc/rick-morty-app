@@ -29,6 +29,9 @@ jobs:
       - name: Run Jest tests
         run: yarn test
 
+      - name: Force failure
+        run: exit 1
+
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v1.2
         env:
@@ -41,12 +44,25 @@ jobs:
         timeout-minutes: 2
 
         #Telegram deploy succes message
-      - name: send telegram message on push
+      - name: Send telegram message on Success
         uses: appleboy/telegram-action@master
+        if: ${{ success() }}
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: |
-            Deploy finished.
+            🟢 Deploy success finished.
+
+            Repository: ${{ github.repository }}
+
+      #Telegram deploy fail message
+      - name: Send telegram message on Failure
+        uses: appleboy/telegram-action@master
+        if: ${{ failure() }}
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: |
+            🔴 Deploy failed.
 
             Repository: ${{ github.repository }}
